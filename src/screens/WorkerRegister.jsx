@@ -38,7 +38,7 @@ function WorkerRegister({
 
     try {
       const response = await fetch(
-        "http://https://namma-kelasa-backend.onrender.com/api/users/register/worker/",
+        "https://namma-kelasa-backend.onrender.com/api/users/register/worker/",
         {
           method: "POST",
           headers: {

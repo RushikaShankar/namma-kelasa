@@ -79,7 +79,7 @@ function App() {
 
 useEffect(() => {
 
-  fetch("http://https://namma-kelasa-backend.onrender.com/api/users/jobs/create/")
+  fetch("https://namma-kelasa-backend.onrender.com/api/users/jobs/create/")
     .then((response) => response.json())
     .then(async (data) => {
 
@@ -91,7 +91,7 @@ useEffect(() => {
           if (currentWorker) {
 
             const statusResponse = await fetch(
-              `http://https://namma-kelasa-backend.onrender.com/api/users/jobs/${job.id}/booking-status/${currentWorker.id}/`
+              `https://namma-kelasa-backend.onrender.com/api/users/jobs/${job.id}/booking-status/${currentWorker.id}/`
             );
 
             if (statusResponse.ok) {
@@ -254,7 +254,7 @@ function handleLogout() {
 //   try {
 
 //     const response = await fetch(
-//       "http://https://namma-kelasa-backend.onrender.com/api/users/register/farmer/",
+//       "https://namma-kelasa-backend.onrender.com/api/users/register/farmer/",
 //       {
 //         method: "POST",
 
@@ -434,7 +434,7 @@ async function handleJobCreated(jobData) {
   try {
 
     const response = await fetch(
-      "http://https://namma-kelasa-backend.onrender.com/api/users/jobs/create/",
+      "https://namma-kelasa-backend.onrender.com/api/users/jobs/create/",
       {
         method: "POST",
 
@@ -942,7 +942,7 @@ async function handleJobCreated(jobData) {
 
   try {
     const response = await fetch(
-      "http://https://namma-kelasa-backend.onrender.com/api/users/jobs/accept/",
+      "https://namma-kelasa-backend.onrender.com/api/users/jobs/accept/",
       {
         method: "POST",
         headers: {
@@ -1043,7 +1043,7 @@ async function handleJobCreated(jobData) {
 //   try {
 
 //     const response = await fetch(
-//       "http://https://namma-kelasa-backend.onrender.com/api/users/jobs/accept/",
+//       "https://namma-kelasa-backend.onrender.com/api/users/jobs/accept/",
 //       {
 //         method: "POST",
 
@@ -1131,7 +1131,7 @@ async function handleLoadFarmerJobStatus(jobId) {
   try {
 
     const response = await fetch(
-      `http://https://namma-kelasa-backend.onrender.com/api/users/jobs/${jobId}/status/`
+      `https://namma-kelasa-backend.onrender.com/api/users/jobs/${jobId}/status/`
     );
 
     const data = await response.json();

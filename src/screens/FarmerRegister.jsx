@@ -92,7 +92,7 @@ function FarmerRegister({
 
     try {
       const response = await fetch(
-        "http://https://namma-kelasa-backend.onrender.com/api/users/register/farmer/",
+        "https://namma-kelasa-backend.onrender.com/api/users/register/farmer/",
         {
           method: "POST",
 
