@@ -1,0 +1,3260 @@
+/* =========================================================
+   NAMMA KELASA
+   OPTION 1 — NATURAL FARM / PREMIUM
+   FARMER + WORKER
+   LIGHT + DARK MODE
+   ========================================================= */
+
+
+/* =========================================================
+   GLOBAL
+   ========================================================= */
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #eef3ed;
+}
+
+button,
+input,
+select {
+  font-family: inherit;
+}
+
+button {
+  -webkit-tap-highlight-color: transparent;
+}
+
+.app {
+  min-height: 100vh;
+
+  --bg: #f3f7f1;
+  --surface: #ffffff;
+  --surface-soft: #e8f2e6;
+  --surface-muted: #f1f5ef;
+
+  --primary: #2e7d32;
+  --primary-dark: #256628;
+  --primary-light: #dff0df;
+
+  --accent: #d59a28;
+  --accent-soft: #f8efd8;
+
+  --text: #243424;
+  --text-soft: #606a60;
+  --text-muted: #858d85;
+
+  --border: #dfe6dd;
+
+  --danger: #c94a4a;
+  --danger-soft: #fbeaea;
+
+  --shadow: 0 8px 25px rgba(32, 55, 35, 0.07);
+  --shadow-small: 0 3px 12px rgba(32, 55, 35, 0.07);
+
+  background: var(--bg);
+  color: var(--text);
+
+  transition:
+    background 0.25s ease,
+    color 0.25s ease;
+}
+
+
+/* =========================================================
+   DARK THEME
+   ========================================================= */
+
+.app.dark-theme {
+  --bg: #172119;
+  --surface: #202b22;
+  --surface-soft: #26392a;
+  --surface-muted: #2a352c;
+
+  --primary: #79c67f;
+  --primary-dark: #5ca963;
+  --primary-light: #29462e;
+
+  --accent: #e0ad48;
+  --accent-soft: #443820;
+
+  --text: #edf5ed;
+  --text-soft: #c2ccc3;
+  --text-muted: #929d94;
+
+  --border: #39463b;
+
+  --danger: #ef7777;
+  --danger-soft: #442b2b;
+
+  --shadow: 0 8px 25px rgba(0, 0, 0, 0.20);
+  --shadow-small: 0 3px 12px rgba(0, 0, 0, 0.18);
+}
+
+
+/* =========================================================
+   COMMON THEME TOGGLE
+   ========================================================= */
+
+.theme-toggle {
+  width: 42px;
+  height: 42px;
+  flex-shrink: 0;
+
+  border: 1px solid var(--border);
+  border-radius: 50%;
+
+  background: var(--surface);
+  color: var(--text);
+
+  font-size: 19px;
+  cursor: pointer;
+
+  box-shadow: var(--shadow-small);
+
+  transition: 0.2s ease;
+}
+
+.theme-toggle:hover {
+  transform: translateY(-2px);
+}
+
+
+/* =========================================================
+   COMMON BACK BUTTON
+   ========================================================= */
+
+.back-button {
+  min-height: 40px;
+  padding: 8px 13px;
+
+  border: none;
+  border-radius: 20px;
+
+  background: var(--surface);
+  color: var(--text);
+
+  font-size: 14px;
+  font-weight: 600;
+
+  cursor: pointer;
+  box-shadow: var(--shadow-small);
+
+  transition: 0.2s ease;
+}
+
+.back-button:hover {
+  transform: translateY(-1px);
+}
+
+
+/* =========================================================
+   WELCOME SCREEN
+   ========================================================= */
+
+.welcome-screen {
+  min-height: 100vh;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  padding: 20px;
+}
+
+.welcome-card {
+  position: relative;
+
+  width: 100%;
+  max-width: 430px;
+
+  padding: 45px 30px;
+
+  background: var(--surface);
+  border-radius: 26px;
+
+  text-align: center;
+
+  box-shadow: var(--shadow);
+}
+
+.logo {
+  width: 100px;
+  height: 100px;
+
+  margin: 0 auto 25px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background: var(--surface-soft);
+  border-radius: 50%;
+
+  font-size: 42px;
+  letter-spacing: -8px;
+}
+
+.welcome-card h1 {
+  margin: 0;
+
+  font-size: 32px;
+  letter-spacing: 1.5px;
+
+  color: var(--primary);
+}
+
+.tagline {
+  margin-top: 14px;
+  margin-bottom: 0;
+
+  color: var(--text-soft);
+
+  font-size: 17px;
+  font-weight: 500;
+
+  line-height: 1.5;
+}
+
+.supporting-text {
+  margin-top: 6px;
+
+  color: var(--text-muted);
+
+  font-size: 15px;
+  font-style: italic;
+}
+
+.language-section {
+  margin-top: 45px;
+}
+
+.language-section h3 {
+  margin-bottom: 20px;
+
+  font-size: 16px;
+  font-weight: normal;
+
+  color: var(--text-soft);
+}
+
+.language-button {
+  width: 100%;
+
+  padding: 15px;
+  margin-bottom: 12px;
+
+  border: 1px solid var(--border);
+  border-radius: 12px;
+
+  font-size: 17px;
+  font-weight: 600;
+
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.language-button.primary,
+.language-button.selected {
+  background: var(--primary);
+  color: white;
+
+  border-color: var(--primary);
+}
+
+.language-button.secondary {
+  background: var(--surface-muted);
+  color: var(--text);
+}
+
+.language-button:hover {
+  transform: translateY(-1px);
+}
+
+
+/* =========================================================
+   PLACEHOLDER
+   ========================================================= */
+
+.placeholder-screen {
+  min-height: 100vh;
+
+  display: flex;
+  flex-direction: column;
+
+  justify-content: center;
+  align-items: center;
+
+  color: var(--text);
+}
+
+
+/* =========================================================
+   USER TYPE
+   ========================================================= */
+
+.user-type-screen {
+  min-height: 100vh;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  padding: 20px;
+}
+
+.user-type-card {
+  width: 100%;
+  max-width: 430px;
+
+  text-align: center;
+}
+
+.user-type-card h1 {
+  margin: 20px 0 0;
+
+  font-size: 30px;
+  color: var(--primary);
+}
+
+.user-type-subtitle {
+  margin-top: 10px;
+  margin-bottom: 35px;
+
+  color: var(--text-soft);
+
+  font-size: 15px;
+}
+
+.user-options {
+  display: flex;
+  flex-direction: column;
+
+  gap: 18px;
+}
+
+.user-option {
+  width: 100%;
+
+  padding: 28px 20px;
+
+  background: var(--surface);
+
+  border: 2px solid transparent;
+  border-radius: 20px;
+
+  text-align: center;
+
+  cursor: pointer;
+
+  box-shadow: var(--shadow);
+
+  color: var(--text);
+
+  transition: all 0.2s ease;
+}
+
+.user-option:hover {
+  transform: translateY(-3px);
+}
+
+.farmer-option:hover,
+.worker-option:hover {
+  border-color: var(--primary);
+}
+
+.user-icon {
+  font-size: 50px;
+  margin-bottom: 10px;
+}
+
+.user-option h2 {
+  margin: 5px 0;
+
+  font-size: 21px;
+  color: var(--text);
+}
+
+.user-option p {
+  margin: 8px 0 0;
+
+  font-size: 14px;
+  color: var(--text-muted);
+}
+
+
+/* =========================================================
+   REGISTRATION
+   ========================================================= */
+
+.register-screen {
+  min-height: 100vh;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  padding: 20px;
+}
+
+.register-card {
+  width: 100%;
+  max-width: 430px;
+
+  background: var(--surface);
+
+  padding: 30px 28px;
+
+  border-radius: 24px;
+
+  box-shadow: var(--shadow);
+}
+
+.register-icon {
+  width: 75px;
+  height: 75px;
+
+  margin: 18px auto;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background: var(--surface-soft);
+
+  border-radius: 50%;
+
+  font-size: 38px;
+}
+
+.register-card h1 {
+  margin: 0;
+
+  text-align: center;
+
+  font-size: 27px;
+  color: var(--primary);
+}
+
+.register-subtitle {
+  text-align: center;
+
+  margin-top: 8px;
+  margin-bottom: 30px;
+
+  color: var(--text-muted);
+
+  font-size: 15px;
+}
+
+.input-group {
+  margin-bottom: 20px;
+}
+
+.input-group label {
+  display: block;
+
+  margin-bottom: 7px;
+
+  font-size: 14px;
+  font-weight: 600;
+
+  color: var(--text);
+}
+
+.input-group input,
+.input-group select {
+  width: 100%;
+
+  padding: 14px;
+
+  border: 1px solid var(--border);
+  border-radius: 10px;
+
+  background: var(--surface);
+  color: var(--text);
+
+  font-size: 15px;
+
+  outline: none;
+
+  transition: 0.2s;
+}
+
+.input-group input::placeholder {
+  color: var(--text-muted);
+}
+
+.input-group input:focus,
+.input-group select:focus {
+  border-color: var(--primary);
+
+  box-shadow: 0 0 0 3px rgba(46, 125, 50, 0.12);
+}
+
+.continue-button {
+  width: 100%;
+
+  padding: 15px;
+  margin-top: 8px;
+
+  border: none;
+  border-radius: 12px;
+
+  background: var(--primary);
+  color: white;
+
+  font-size: 17px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: 0.2s;
+}
+
+.continue-button:hover {
+  background: var(--primary-dark);
+}
+
+
+/* =========================================================
+   FARMER HOME
+   ========================================================= */
+
+.farmer-home {
+  min-height: 100vh;
+
+  width: 100%;
+  max-width: 430px;
+
+  margin: 0 auto;
+
+  padding: 20px 20px 100px;
+
+  background: var(--bg);
+  color: var(--text);
+}
+
+
+/* HEADER */
+
+.home-header {
+  display: flex;
+
+  justify-content: space-between;
+  align-items: center;
+
+  margin-bottom: 35px;
+}
+
+.app-name {
+  font-size: 19px;
+  font-weight: 700;
+
+  letter-spacing: 1px;
+
+  color: var(--primary);
+}
+
+.profile-button {
+  width: 42px;
+  height: 42px;
+
+  border: 1px solid var(--border);
+  border-radius: 50%;
+
+  background: var(--surface);
+  color: var(--text);
+
+  font-size: 20px;
+
+  cursor: pointer;
+
+  box-shadow: var(--shadow-small);
+}
+
+.profile-button:hover {
+  transform: translateY(-2px);
+}
+
+
+/* GREETING */
+
+.greeting-section {
+  margin-bottom: 28px;
+}
+
+.greeting-small {
+  margin: 0;
+
+  font-size: 14px;
+  color: var(--text-muted);
+}
+
+.greeting-section h1 {
+  margin: 5px 0;
+
+  font-size: 30px;
+
+  color: var(--primary);
+}
+
+.greeting-message {
+  margin: 0;
+
+  font-size: 15px;
+
+  color: var(--text-soft);
+}
+
+
+/* CREATE JOB */
+
+.create-job-card {
+  display: flex;
+
+  align-items: center;
+
+  gap: 18px;
+
+  padding: 24px;
+
+  background: var(--surface-soft);
+
+  border-radius: 20px;
+
+  margin-bottom: 32px;
+}
+
+.create-job-icon {
+  width: 65px;
+  height: 65px;
+
+  flex-shrink: 0;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background: var(--surface);
+
+  border-radius: 16px;
+
+  font-size: 30px;
+}
+
+.create-job-content h2 {
+  margin: 0;
+
+  font-size: 20px;
+
+  color: var(--primary);
+}
+
+.create-job-content p {
+  margin: 5px 0 12px;
+
+  font-size: 13px;
+
+  color: var(--text-soft);
+}
+
+.create-job-button {
+  border: none;
+
+  background: var(--primary);
+  color: white;
+
+  padding: 9px 15px;
+
+  border-radius: 8px;
+
+  font-size: 13px;
+  font-weight: 600;
+
+  cursor: pointer;
+}
+
+
+/* SECTION */
+
+.section-header {
+  display: flex;
+
+  justify-content: space-between;
+  align-items: center;
+
+  margin-bottom: 14px;
+}
+
+.section-header .section-title {
+  margin: 0;
+}
+
+.view-all-button {
+  border: none;
+
+  background: transparent;
+
+  color: var(--primary);
+
+  font-size: 13px;
+  font-weight: 600;
+
+  cursor: pointer;
+}
+
+.home-section {
+  margin-bottom: 28px;
+}
+
+.section-title {
+  margin-bottom: 14px;
+
+  font-size: 19px;
+
+  color: var(--text);
+}
+
+
+/* EMPTY JOB */
+
+.empty-job-card {
+  padding: 28px 20px;
+
+  background: var(--surface);
+
+  border-radius: 16px;
+
+  text-align: center;
+
+  box-shadow: var(--shadow-small);
+}
+
+.empty-icon {
+  font-size: 30px;
+
+  margin-bottom: 8px;
+}
+
+.empty-job-card h3 {
+  margin: 5px 0;
+
+  font-size: 16px;
+
+  color: var(--text);
+}
+
+.empty-job-card p {
+  margin: 5px 0;
+
+  font-size: 13px;
+
+  color: var(--text-muted);
+}
+
+
+/* EXISTING JOB CARD */
+
+.job-card {
+  padding: 18px;
+
+  background: var(--surface);
+
+  border-radius: 17px;
+
+  box-shadow: var(--shadow-small);
+}
+
+.job-card-top {
+  display: flex;
+
+  align-items: center;
+
+  gap: 14px;
+}
+
+.job-type-icon {
+  width: 52px;
+  height: 52px;
+
+  flex-shrink: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: var(--surface-soft);
+
+  border-radius: 13px;
+
+  font-size: 25px;
+}
+
+.job-card h3 {
+  margin: 0 0 4px;
+
+  color: var(--text);
+}
+
+.job-card-top p {
+  margin: 0;
+
+  color: var(--text-muted);
+
+  font-size: 13px;
+}
+
+.job-details {
+  display: flex;
+
+  justify-content: space-between;
+
+  gap: 8px;
+
+  margin-top: 18px;
+  padding-top: 15px;
+
+  border-top: 1px solid var(--border);
+}
+
+.job-details div {
+  text-align: center;
+
+  font-size: 13px;
+
+  color: var(--text-soft);
+}
+
+.job-details span {
+  display: block;
+
+  margin-bottom: 3px;
+}
+
+.job-details p {
+  margin: 0;
+}
+
+.view-job-button {
+  width: 100%;
+
+  margin-top: 15px;
+
+  padding: 10px;
+
+  border: 1px solid var(--primary);
+  border-radius: 9px;
+
+  background: transparent;
+
+  color: var(--primary);
+
+  font-weight: 600;
+
+  cursor: pointer;
+}
+
+
+/* =========================================================
+   BOTTOM NAVIGATION
+   ========================================================= */
+
+.bottom-navigation {
+  position: fixed;
+
+  bottom: 0;
+  left: 50%;
+
+  transform: translateX(-50%);
+
+  width: 100%;
+  max-width: 430px;
+
+  height: 70px;
+
+  display: flex;
+
+  justify-content: space-around;
+  align-items: center;
+
+  background: var(--surface);
+
+  border-top: 1px solid var(--border);
+
+  z-index: 10;
+
+  box-shadow: 0 -4px 15px rgba(0, 0, 0, 0.04);
+}
+
+.nav-item {
+  border: none;
+
+  background: transparent;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  gap: 4px;
+
+  cursor: pointer;
+
+  color: var(--text-muted);
+}
+
+.nav-item span {
+  font-size: 20px;
+}
+
+.nav-item small {
+  font-size: 11px;
+}
+
+.nav-item.active {
+  color: var(--primary);
+}
+
+
+/* =========================================================
+   CREATE JOB
+   ========================================================= */
+
+.create-job-screen {
+  min-height: 100vh;
+
+  display: flex;
+  justify-content: center;
+
+  padding: 25px 20px 40px;
+
+  background: var(--bg);
+}
+
+.create-job-container {
+  width: 100%;
+  max-width: 430px;
+}
+
+.create-job-header {
+  display: flex;
+
+  align-items: center;
+
+  gap: 15px;
+
+  margin: 22px 0 30px;
+}
+
+.create-job-icon-large {
+  width: 58px;
+  height: 58px;
+
+  flex-shrink: 0;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background: var(--surface-soft);
+
+  border-radius: 15px;
+
+  font-size: 28px;
+}
+
+.create-job-header h1 {
+  margin: 0;
+
+  font-size: 27px;
+
+  color: var(--primary);
+}
+
+.create-job-header p {
+  margin: 5px 0 0;
+
+  font-size: 14px;
+
+  color: var(--text-muted);
+}
+
+
+/* JOB FORM */
+
+.job-input-group {
+  margin-bottom: 20px;
+}
+
+.job-input-group label {
+  display: block;
+
+  margin-bottom: 7px;
+
+  font-size: 14px;
+  font-weight: 600;
+
+  color: var(--text);
+}
+
+.job-input-group input,
+.job-input-group select {
+  width: 100%;
+
+  padding: 14px;
+
+  border: 1px solid var(--border);
+  border-radius: 10px;
+
+  background: var(--surface);
+  color: var(--text);
+
+  font-size: 15px;
+
+  outline: none;
+}
+
+.job-input-group input::placeholder {
+  color: var(--text-muted);
+}
+
+.job-input-group input:focus,
+.job-input-group select:focus {
+  border-color: var(--primary);
+
+  box-shadow: 0 0 0 3px rgba(46, 125, 50, 0.12);
+}
+
+
+/* WAGE */
+
+.wage-input {
+  display: flex;
+
+  align-items: center;
+
+  background: var(--surface);
+
+  border: 1px solid var(--border);
+
+  border-radius: 10px;
+
+  overflow: hidden;
+}
+
+.wage-input span {
+  padding-left: 14px;
+
+  font-size: 16px;
+  font-weight: 600;
+
+  color: var(--text-soft);
+}
+
+.wage-input input {
+  border: none;
+
+  box-shadow: none;
+
+  border-radius: 0;
+}
+
+.wage-input input:focus {
+  box-shadow: none;
+}
+
+
+/* MAP */
+
+.map-section {
+  margin: 5px 0 20px;
+
+  padding: 12px;
+
+  background: var(--surface);
+
+  border-radius: 14px;
+
+  box-shadow: var(--shadow-small);
+
+  overflow: hidden;
+}
+
+.map-section p {
+  margin: 0 0 10px;
+
+  font-size: 13px;
+  font-weight: 600;
+
+  color: var(--text);
+}
+
+.map-section iframe {
+  display: block;
+
+  width: 100%;
+
+  border-radius: 10px;
+}
+
+
+/* CREATE BUTTON */
+
+.create-job-submit {
+  width: 100%;
+
+  padding: 15px;
+  margin-top: 10px;
+
+  border: none;
+  border-radius: 12px;
+
+  background: var(--primary);
+  color: white;
+
+  font-size: 17px;
+  font-weight: 600;
+
+  cursor: pointer;
+}
+
+.create-job-submit:hover {
+  background: var(--primary-dark);
+}
+
+
+/* =========================================================
+   NEARBY WORKERS
+   ========================================================= */
+
+.nearby-workers-screen {
+  min-height: 100vh;
+
+  width: 100%;
+  max-width: 430px;
+
+  margin: 0 auto;
+
+  padding: 20px;
+
+  background: var(--bg);
+}
+
+.workers-header {
+  display: flex;
+
+  align-items: center;
+
+  gap: 15px;
+
+  margin-bottom: 22px;
+}
+
+.workers-header h1 {
+  margin: 0;
+
+  font-size: 25px;
+
+  color: var(--primary);
+}
+
+.job-summary {
+  display: flex;
+
+  align-items: center;
+
+  gap: 14px;
+
+  padding: 18px;
+
+  background: var(--surface-soft);
+
+  border-radius: 16px;
+
+  margin-bottom: 28px;
+}
+
+.job-summary-icon {
+  width: 52px;
+  height: 52px;
+
+  flex-shrink: 0;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  background: var(--surface);
+
+  border-radius: 12px;
+
+  font-size: 25px;
+}
+
+.job-summary h2 {
+  margin: 0 0 5px;
+
+  font-size: 18px;
+
+  color: var(--primary);
+}
+
+.job-summary p {
+  margin: 3px 0;
+
+  font-size: 13px;
+
+  color: var(--text-soft);
+}
+
+.workers-title {
+  display: flex;
+
+  justify-content: space-between;
+  align-items: center;
+
+  margin-bottom: 15px;
+}
+
+.workers-title h2 {
+  margin: 0;
+
+  font-size: 19px;
+
+  color: var(--text);
+}
+
+.workers-title span {
+  font-size: 13px;
+
+  color: var(--text-muted);
+}
+
+.worker-list {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 15px;
+}
+
+.worker-card {
+  padding: 18px;
+
+  background: var(--surface);
+
+  border-radius: 17px;
+
+  box-shadow: var(--shadow-small);
+}
+
+.worker-main {
+  display: flex;
+
+  gap: 14px;
+}
+
+.worker-avatar {
+  width: 58px;
+  height: 58px;
+
+  flex-shrink: 0;
+
+  display: flex;
+
+  justify-content: center;
+  align-items: center;
+
+  background: var(--surface-muted);
+
+  border-radius: 50%;
+
+  font-size: 30px;
+}
+
+.worker-info h3 {
+  margin: 0 0 4px;
+
+  font-size: 17px;
+
+  color: var(--text);
+}
+
+.rating {
+  margin-bottom: 5px;
+
+  font-size: 13px;
+  font-weight: 600;
+
+  color: var(--accent);
+}
+
+.worker-info p {
+  margin: 3px 0;
+
+  font-size: 12px;
+
+  color: var(--text-muted);
+}
+
+.worker-bottom {
+  display: flex;
+
+  justify-content: space-between;
+  align-items: center;
+
+  margin-top: 16px;
+  padding-top: 13px;
+
+  border-top: 1px solid var(--border);
+}
+
+.available-badge {
+  padding: 5px 9px;
+
+  border-radius: 20px;
+
+  background: var(--primary-light);
+
+  color: var(--primary);
+
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.select-worker-button {
+  padding: 9px 18px;
+
+  border: none;
+  border-radius: 8px;
+
+  background: var(--primary);
+  color: white;
+
+  font-size: 13px;
+  font-weight: 600;
+
+  cursor: pointer;
+}
+
+
+/* =========================================================
+   WORKER DETAILS
+   ========================================================= */
+
+.worker-details-screen {
+  min-height: 100vh;
+
+  width: 100%;
+  max-width: 430px;
+
+  margin: 0 auto;
+
+  padding: 20px 20px 40px;
+
+  background: var(--bg);
+}
+
+.worker-details-header {
+  display: flex;
+
+  align-items: center;
+
+  gap: 15px;
+
+  margin-bottom: 25px;
+}
+
+.worker-details-header h1 {
+  margin: 0;
+
+  font-size: 24px;
+
+  color: var(--primary);
+}
+
+.worker-profile-card {
+  padding: 25px;
+
+  background: var(--surface);
+
+  border-radius: 20px;
+
+  text-align: center;
+
+  box-shadow: var(--shadow-small);
+
+  margin-bottom: 22px;
+}
+
+.large-worker-avatar {
+  width: 90px;
+  height: 90px;
+
+  margin: 0 auto 12px;
+
+  display: flex;
+
+  justify-content: center;
+  align-items: center;
+
+  background: var(--surface-soft);
+
+  border-radius: 50%;
+
+  font-size: 45px;
+}
+
+.worker-profile-card h2 {
+  margin: 5px 0;
+
+  font-size: 23px;
+
+  color: var(--text);
+}
+
+.large-rating {
+  margin-top: 6px;
+
+  font-size: 16px;
+  font-weight: 600;
+
+  color: var(--accent);
+}
+
+.worker-profile-card p {
+  margin: 7px 0 0;
+
+  font-size: 13px;
+
+  color: var(--text-muted);
+}
+
+.worker-info-section {
+  padding: 20px;
+
+  background: var(--surface);
+
+  border-radius: 17px;
+
+  margin-bottom: 18px;
+
+  box-shadow: var(--shadow-small);
+}
+
+.worker-info-section h2 {
+  margin: 0 0 18px;
+
+  font-size: 18px;
+
+  color: var(--text);
+}
+
+.worker-info-row {
+  display: flex;
+
+  align-items: center;
+
+  gap: 14px;
+
+  padding: 12px 0;
+
+  border-bottom: 1px solid var(--border);
+}
+
+.worker-info-row:last-child {
+  border-bottom: none;
+}
+
+.worker-info-row > span {
+  font-size: 21px;
+}
+
+.worker-info-row small {
+  display: block;
+
+  color: var(--text-muted);
+
+  font-size: 11px;
+}
+
+.worker-info-row p {
+  margin: 3px 0 0;
+
+  color: var(--text);
+
+  font-size: 14px;
+}
+
+.worker-details-screen .worker-job-card {
+  padding: 20px;
+
+  background: var(--surface-soft);
+
+  border-radius: 17px;
+
+  margin-bottom: 20px;
+
+  box-shadow: none;
+}
+
+.worker-job-card h2 {
+  margin: 0 0 18px;
+
+  font-size: 18px;
+
+  color: var(--text);
+}
+
+.job-info-line {
+  display: flex;
+
+  align-items: center;
+
+  gap: 12px;
+
+  margin-bottom: 10px;
+}
+
+.job-info-line:last-child {
+  margin-bottom: 0;
+}
+
+.job-info-line span {
+  width: 25px;
+
+  text-align: center;
+}
+
+.job-info-line p {
+  margin: 0;
+
+  font-size: 14px;
+
+  color: var(--text);
+}
+
+.call-worker-button {
+  display: block;
+
+  width: 100%;
+
+  padding: 14px;
+
+  margin-bottom: 12px;
+
+  border-radius: 11px;
+
+  background: var(--surface);
+
+  border: 1px solid var(--primary);
+
+  color: var(--primary);
+
+  text-align: center;
+
+  text-decoration: none;
+
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.choose-worker-button {
+  width: 100%;
+
+  padding: 15px;
+
+  border: none;
+  border-radius: 11px;
+
+  background: var(--primary);
+  color: white;
+
+  font-size: 16px;
+  font-weight: 600;
+
+  cursor: pointer;
+}
+
+
+/* =========================================================
+   BOOKING CONFIRMATION
+   ========================================================= */
+
+.booking-screen {
+  min-height: 100vh;
+
+  width: 100%;
+  max-width: 430px;
+
+  margin: 0 auto;
+
+  padding: 20px;
+
+  background: var(--bg);
+}
+
+.booking-header {
+  display: flex;
+
+  align-items: center;
+
+  gap: 15px;
+
+  margin-bottom: 25px;
+}
+
+.booking-header h1 {
+  margin: 0;
+
+  font-size: 24px;
+
+  color: var(--primary);
+}
+
+.booking-card {
+  padding: 22px;
+
+  background: var(--surface);
+
+  border-radius: 20px;
+
+  box-shadow: var(--shadow-small);
+
+  margin-bottom: 18px;
+}
+
+.booking-card > h2 {
+  margin: 0 0 20px;
+
+  font-size: 19px;
+
+  color: var(--text);
+}
+
+.selected-workers-list {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 12px;
+}
+
+.booking-worker {
+  display: flex;
+
+  align-items: center;
+
+  gap: 14px;
+}
+
+.booking-avatar {
+  width: 60px;
+  height: 60px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  background: var(--surface-soft);
+
+  border-radius: 50%;
+
+  font-size: 30px;
+}
+
+.booking-worker h3 {
+  margin: 0;
+
+  font-size: 18px;
+
+  color: var(--text);
+}
+
+.booking-worker p {
+  margin: 5px 0 0;
+
+  color: var(--accent);
+}
+
+.booking-divider {
+  height: 1px;
+
+  background: var(--border);
+
+  margin: 20px 0;
+}
+
+.booking-detail {
+  display: flex;
+
+  align-items: center;
+
+  gap: 14px;
+
+  margin-bottom: 17px;
+}
+
+.booking-detail > span {
+  width: 28px;
+
+  text-align: center;
+
+  font-size: 20px;
+}
+
+.booking-detail small {
+  display: block;
+
+  font-size: 11px;
+
+  color: var(--text-muted);
+}
+
+.booking-detail p {
+  margin: 3px 0 0;
+
+  font-size: 14px;
+
+  color: var(--text);
+}
+
+.wage-row {
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: center;
+}
+
+.wage-row small {
+  font-size: 11px;
+
+  color: var(--text-muted);
+}
+
+.wage-row p {
+  margin: 4px 0 0;
+
+  font-size: 15px;
+  font-weight: 600;
+
+  color: var(--text);
+}
+
+.total-wage {
+  text-align: right;
+}
+
+.total-wage p {
+  font-size: 20px;
+
+  color: var(--primary);
+}
+
+.confirmation-message {
+  display: flex;
+
+  align-items: center;
+
+  gap: 10px;
+
+  padding: 13px 15px;
+
+  margin-bottom: 18px;
+
+  background: var(--surface-soft);
+
+  border-radius: 12px;
+}
+
+.confirmation-message span {
+  width: 23px;
+  height: 23px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background: var(--primary);
+
+  color: white;
+
+  font-size: 13px;
+}
+
+.confirmation-message p {
+  margin: 0;
+
+  font-size: 12px;
+
+  color: var(--text-soft);
+}
+
+.confirm-booking-button {
+  width: 100%;
+
+  padding: 16px;
+
+  border: none;
+  border-radius: 12px;
+
+  background: var(--primary);
+  color: white;
+
+  font-size: 17px;
+  font-weight: 600;
+
+  cursor: pointer;
+}
+
+.confirm-booking-button:hover {
+  background: var(--primary-dark);
+}
+
+
+/* =========================================================
+   PROFILE
+   ========================================================= */
+
+.profile-screen {
+  min-height: 100vh;
+
+  width: 100%;
+  max-width: 430px;
+
+  margin: 0 auto;
+
+  padding: 20px 20px 40px;
+
+  background: var(--bg);
+  color: var(--text);
+}
+
+.profile-header {
+  display: flex;
+
+  align-items: center;
+
+  gap: 12px;
+
+  margin-bottom: 30px;
+}
+
+.profile-header h1,
+.profile-header h2 {
+  flex: 1;
+
+  margin: 0;
+
+  font-size: 24px;
+
+  color: var(--primary);
+}
+
+.profile-content {
+  width: 100%;
+}
+
+.profile-avatar {
+  width: 90px;
+  height: 90px;
+
+  margin: 10px auto 15px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  background: var(--surface-soft);
+
+  border-radius: 50%;
+
+  font-size: 44px;
+
+  box-shadow: var(--shadow-small);
+}
+
+.profile-name {
+  margin: 0;
+
+  text-align: center;
+
+  font-size: 25px;
+  font-weight: 700;
+
+  color: var(--text);
+}
+
+.profile-role {
+  margin: 7px 0 28px;
+
+  text-align: center;
+
+  color: var(--primary);
+
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.profile-card {
+  width: 100%;
+
+  padding: 8px 20px;
+
+  background: var(--surface);
+
+  border-radius: 18px;
+
+  box-shadow: var(--shadow-small);
+
+  margin-bottom: 20px;
+}
+
+.profile-item {
+  display: flex;
+
+  align-items: center;
+
+  gap: 14px;
+
+  padding: 17px 0;
+
+  border-bottom: 1px solid var(--border);
+}
+
+.profile-item:last-child {
+  border-bottom: none;
+}
+
+.profile-icon {
+  width: 42px;
+  height: 42px;
+
+  flex-shrink: 0;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  background: var(--surface-soft);
+
+  border-radius: 12px;
+
+  font-size: 20px;
+}
+
+.profile-label {
+  display: block;
+
+  margin-bottom: 4px;
+
+  font-size: 11px;
+  font-weight: 500;
+
+  color: var(--text-muted);
+}
+
+.profile-value {
+  display: block;
+
+  font-size: 14px;
+  font-weight: 600;
+
+  color: var(--text);
+}
+
+.profile-call-button {
+  width: 100%;
+
+  padding: 14px;
+
+  margin-bottom: 12px;
+
+  border: none;
+  border-radius: 11px;
+
+  background: var(--primary);
+  color: white;
+
+  font-size: 15px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: 0.2s ease;
+}
+
+.profile-call-button:hover {
+  background: var(--primary-dark);
+
+  transform: translateY(-1px);
+}
+
+.profile-back-button {
+  width: 100%;
+
+  padding: 14px;
+
+  border: 1px solid var(--border);
+  border-radius: 11px;
+
+  background: var(--surface);
+  color: var(--text);
+
+  font-size: 15px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: 0.2s ease;
+}
+
+.profile-back-button:hover {
+  border-color: var(--primary);
+
+  color: var(--primary);
+}
+
+
+/* =========================================================
+   JOB HISTORY
+   ========================================================= */
+
+.job-history-screen {
+  min-height: 100vh;
+
+  width: 100%;
+  max-width: 430px;
+
+  margin: 0 auto;
+
+  padding: 20px;
+
+  background: var(--bg);
+}
+
+.job-history-header {
+  display: flex;
+
+  align-items: center;
+
+  gap: 12px;
+
+  margin-bottom: 25px;
+}
+
+.job-history-header h1 {
+  flex: 1;
+
+  margin: 0;
+
+  font-size: 24px;
+
+  color: var(--primary);
+}
+
+.job-history-list {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 15px;
+}
+
+.history-job-card {
+  padding: 18px;
+
+  background: var(--surface);
+
+  border-radius: 17px;
+
+  box-shadow: var(--shadow-small);
+}
+
+.history-job-top {
+  display: flex;
+
+  align-items: center;
+
+  gap: 14px;
+}
+
+.history-job-top h2 {
+  margin: 0 0 5px;
+
+  font-size: 18px;
+
+  color: var(--text);
+}
+
+.history-job-top p {
+  margin: 0;
+
+  font-size: 13px;
+
+  color: var(--text-muted);
+}
+
+.history-job-details {
+  display: grid;
+
+  grid-template-columns: 1fr 1fr;
+
+  gap: 10px;
+
+  margin-top: 18px;
+  padding-top: 15px;
+
+  border-top: 1px solid var(--border);
+
+  font-size: 12px;
+
+  color: var(--text-soft);
+}
+
+.history-job-details div:last-child {
+  grid-column: 1 / -1;
+}
+
+.history-job-bottom {
+  display: flex;
+
+  justify-content: space-between;
+  align-items: center;
+
+  margin-top: 16px;
+  padding-top: 13px;
+
+  border-top: 1px solid var(--border);
+}
+
+.job-status {
+  padding: 5px 10px;
+
+  border-radius: 20px;
+
+  background: var(--primary-light);
+
+  color: var(--primary);
+
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.delete-job-button {
+  padding: 8px 12px;
+
+  border: 1px solid var(--danger);
+  border-radius: 8px;
+
+  background: transparent;
+
+  color: var(--danger);
+
+  font-size: 12px;
+  font-weight: 600;
+
+  cursor: pointer;
+}
+
+.delete-job-button:hover {
+  background: var(--danger-soft);
+}
+
+
+/* =========================================================
+   BOOKING SUCCESS
+   ========================================================= */
+
+.success-screen,
+.booking-success-screen {
+  min-height: 100vh;
+
+  width: 100%;
+  max-width: 430px;
+
+  margin: 0 auto;
+
+  padding: 40px 20px;
+
+  background: var(--bg);
+
+  text-align: center;
+}
+
+.success-card {
+  width: 100%;
+
+  max-width: 430px;
+
+  padding: 40px 28px;
+
+  background: var(--surface);
+
+  border-radius: 24px;
+
+  text-align: center;
+
+  box-shadow: var(--shadow);
+}
+
+.success-icon {
+  width: 80px;
+  height: 80px;
+
+  margin: 10px auto 20px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background: var(--primary);
+
+  color: white;
+
+  font-size: 42px;
+  font-weight: 600;
+}
+
+.success-card h1,
+.booking-success-screen h1 {
+  margin: 0;
+
+  font-size: 27px;
+
+  color: var(--primary);
+}
+
+.success-card p,
+.success-subtitle {
+  margin: 10px 20px 28px;
+
+  font-size: 14px;
+
+  color: var(--text-soft);
+
+  line-height: 1.5;
+}
+
+
+/* SUCCESS WORKER */
+
+.success-worker-card {
+  display: flex;
+
+  align-items: center;
+
+  gap: 14px;
+
+  padding: 18px;
+
+  margin-bottom: 16px;
+
+  background: var(--surface);
+
+  border-radius: 17px;
+
+  text-align: left;
+
+  box-shadow: var(--shadow-small);
+}
+
+.success-worker-avatar {
+  width: 55px;
+  height: 55px;
+
+  flex-shrink: 0;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background: var(--surface-soft);
+
+  font-size: 28px;
+}
+
+.success-worker-card h2 {
+  margin: 0;
+
+  font-size: 18px;
+
+  color: var(--text);
+}
+
+.success-worker-card p {
+  margin: 5px 0 0;
+
+  font-size: 13px;
+
+  color: var(--text-soft);
+}
+
+
+/* SUCCESS JOB */
+
+.success-job-card {
+  padding: 20px;
+
+  margin-bottom: 16px;
+
+  background: var(--surface);
+
+  border-radius: 17px;
+
+  text-align: left;
+
+  box-shadow: var(--shadow-small);
+}
+
+.success-detail {
+  display: flex;
+
+  align-items: center;
+
+  gap: 14px;
+
+  padding: 11px 0;
+
+  border-bottom: 1px solid var(--border);
+}
+
+.success-detail:last-child {
+  border-bottom: none;
+}
+
+.success-detail > span {
+  width: 28px;
+
+  text-align: center;
+
+  font-size: 19px;
+}
+
+.success-detail small {
+  display: block;
+
+  font-size: 11px;
+
+  color: var(--text-muted);
+}
+
+.success-detail p {
+  margin: 3px 0 0;
+
+  font-size: 14px;
+
+  color: var(--text);
+}
+
+
+/* SUCCESS INFO */
+
+.success-info {
+  display: flex;
+
+  align-items: center;
+
+  gap: 10px;
+
+  padding: 13px 15px;
+
+  margin-bottom: 20px;
+
+  background: var(--surface-soft);
+
+  border-radius: 12px;
+
+  text-align: left;
+}
+
+.success-info span {
+  font-size: 18px;
+}
+
+.success-info p {
+  margin: 0;
+
+  font-size: 12px;
+
+  line-height: 1.4;
+
+  color: var(--text-soft);
+}
+
+
+/* SUCCESS BUTTONS */
+
+.success-primary-button {
+  width: 100%;
+
+  padding: 15px;
+
+  border: none;
+  border-radius: 11px;
+
+  background: var(--primary);
+
+  color: white;
+
+  font-size: 16px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  margin-bottom: 10px;
+}
+
+.success-secondary-button {
+  width: 100%;
+
+  padding: 14px;
+
+  border: 1px solid var(--primary);
+  border-radius: 11px;
+
+  background: var(--surface);
+
+  color: var(--primary);
+
+  font-size: 15px;
+  font-weight: 600;
+
+  cursor: pointer;
+}
+
+
+/* =========================================================
+   JOB COMPLETED
+   ========================================================= */
+
+.job-completed-screen {
+  min-height: 100vh;
+
+  width: 100%;
+  max-width: 430px;
+
+  margin: 0 auto;
+
+  padding: 25px 20px 40px;
+
+  background: var(--bg);
+
+  color: var(--text);
+}
+
+.job-completed-content {
+  width: 100%;
+  max-width: 430px;
+
+  margin: 0 auto;
+
+  text-align: center;
+}
+
+.job-completed-content .success-icon {
+  width: 82px;
+  height: 82px;
+
+  margin: 35px auto 22px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background: var(--primary);
+
+  color: white;
+
+  font-size: 40px;
+  font-weight: 700;
+
+  box-shadow: var(--shadow-small);
+}
+
+.job-completed-content h1 {
+  margin: 0;
+
+  font-size: 27px;
+
+  color: var(--primary);
+}
+
+.job-completed-content > p {
+  margin: 10px 15px 25px;
+
+  font-size: 14px;
+
+  line-height: 1.5;
+
+  color: var(--text-soft);
+}
+
+.completed-job-card {
+  padding: 20px;
+
+  margin-bottom: 18px;
+
+  background: var(--surface);
+
+  border-radius: 17px;
+
+  text-align: left;
+
+  box-shadow: var(--shadow-small);
+}
+
+.completed-job-card h3 {
+  margin: 0 0 12px;
+
+  font-size: 18px;
+
+  color: var(--text);
+}
+
+.completed-job-card p {
+  margin: 7px 0;
+
+  font-size: 13px;
+
+  color: var(--text-soft);
+}
+
+.completed-workers {
+  padding: 20px;
+
+  margin-bottom: 20px;
+
+  background: var(--surface);
+
+  border-radius: 17px;
+
+  text-align: left;
+
+  box-shadow: var(--shadow-small);
+}
+
+.completed-workers h3 {
+  margin: 0 0 15px;
+
+  font-size: 18px;
+
+  color: var(--text);
+}
+
+.completed-worker {
+  display: flex;
+
+  align-items: center;
+
+  gap: 12px;
+
+  padding: 12px 0;
+
+  border-bottom: 1px solid var(--border);
+
+  color: var(--text);
+
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.completed-worker:last-child {
+  border-bottom: none;
+}
+
+.completed-worker span:first-child {
+  width: 40px;
+  height: 40px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  background: var(--surface-soft);
+
+  border-radius: 50%;
+
+  font-size: 20px;
+}
+
+.rate-workers-button {
+  width: 100%;
+
+  padding: 15px;
+
+  margin-bottom: 12px;
+
+  border: none;
+  border-radius: 11px;
+
+  background: var(--primary);
+
+  color: white;
+
+  font-size: 16px;
+  font-weight: 600;
+
+  cursor: pointer;
+}
+
+.home-button {
+  width: 100%;
+
+  padding: 14px;
+
+  border: 1px solid var(--primary);
+  border-radius: 11px;
+
+  background: transparent;
+
+  color: var(--primary);
+
+  font-size: 15px;
+  font-weight: 600;
+
+  cursor: pointer;
+}
+
+.home-button:hover {
+  background: var(--primary-light);
+}
+
+
+/* =========================================================
+   WORKER HOME
+   SAME NATURAL FARM THEME AS FARMER
+   ========================================================= */
+
+.worker-home,
+.worker-home-screen {
+  min-height: 100vh;
+
+  width: 100%;
+  max-width: 430px;
+
+  margin: 0 auto;
+
+  padding: 20px 20px 100px;
+
+  background: var(--bg);
+
+  color: var(--text);
+}
+
+.worker-home-header {
+  display: flex;
+
+  justify-content: space-between;
+  align-items: center;
+
+  margin-bottom: 30px;
+}
+
+.worker-home-header h1 {
+  margin: 0;
+
+  font-size: 25px;
+
+  color: var(--primary);
+}
+
+.worker-home-header p {
+  margin: 6px 0 0;
+
+  color: var(--text-muted);
+
+  font-size: 14px;
+}
+
+.worker-header-actions {
+  display: flex;
+
+  align-items: center;
+
+  gap: 10px;
+}
+
+.worker-welcome-card {
+  width: 100%;
+
+  margin: 35px auto;
+
+  padding: 30px 24px;
+
+  text-align: center;
+
+  border-radius: 22px;
+
+  background: var(--surface);
+
+  box-shadow: var(--shadow);
+}
+
+.worker-icon {
+  width: 75px;
+  height: 75px;
+
+  margin: 0 auto 18px;
+
+  display: flex;
+
+  justify-content: center;
+  align-items: center;
+
+  background: var(--surface-soft);
+
+  border-radius: 50%;
+
+  font-size: 40px;
+}
+
+.worker-welcome-card h2 {
+  margin: 0 0 10px;
+
+  color: var(--primary);
+
+  font-size: 23px;
+}
+
+.worker-welcome-card p {
+  margin: 0 0 25px;
+
+  color: var(--text-soft);
+
+  line-height: 1.5;
+}
+
+.find-jobs-button,
+.accept-job-button {
+  border: none;
+
+  border-radius: 12px;
+
+  padding: 13px 24px;
+
+  background: var(--primary);
+  color: white;
+
+  font-size: 16px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: 0.2s ease;
+}
+
+.find-jobs-button:hover,
+.accept-job-button:hover {
+  background: var(--primary-dark);
+
+  transform: translateY(-1px);
+}
+
+
+/* =========================================================
+   WORKER JOBS
+   ========================================================= */
+
+.worker-jobs-screen {
+  min-height: 100vh;
+
+  width: 100%;
+  max-width: 430px;
+
+  margin: 0 auto;
+
+  padding: 20px;
+
+  background: var(--bg);
+
+  color: var(--text);
+}
+
+.worker-jobs-header {
+  display: flex;
+
+  align-items: center;
+
+  gap: 12px;
+
+  margin-bottom: 25px;
+}
+
+.worker-jobs-header h1 {
+  flex: 1;
+
+  margin: 0;
+
+  font-size: 24px;
+
+  color: var(--primary);
+}
+
+.worker-jobs-list,
+.worker-job-list {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 15px;
+}
+
+.worker-jobs-screen .worker-job-card {
+  width: 100%;
+
+  padding: 20px;
+
+  background: var(--surface);
+
+  border-radius: 18px;
+
+  box-shadow: var(--shadow-small);
+
+  color: var(--text);
+}
+
+.worker-jobs-screen .worker-job-card h2 {
+  margin: 0 0 12px;
+
+  font-size: 19px;
+
+  color: var(--text);
+}
+
+.worker-jobs-screen .worker-job-card p {
+  margin: 8px 0;
+
+  font-size: 13px;
+
+  color: var(--text-soft);
+}
+
+.worker-jobs-screen .worker-job-card button {
+  width: 100%;
+
+  margin-top: 15px;
+
+  padding: 12px;
+
+  border: none;
+  border-radius: 10px;
+
+  background: var(--primary);
+
+  color: white;
+
+  font-weight: 600;
+
+  cursor: pointer;
+}
+
+.worker-jobs-screen .worker-job-card button:hover {
+  background: var(--primary-dark);
+}
+
+.worker-jobs-screen .worker-job-card button:disabled {
+  cursor: not-allowed;
+
+  opacity: 0.6;
+}
+
+.empty-worker-jobs {
+  text-align: center;
+
+  margin-top: 80px;
+
+  color: var(--text-muted);
+}
+
+.empty-worker-jobs div {
+  font-size: 50px;
+
+  margin-bottom: 10px;
+}
+
+
+/* =========================================================
+   WORKER JOB DETAILS
+   ========================================================= */
+
+.worker-job-details-screen {
+  min-height: 100vh;
+
+  width: 100%;
+  max-width: 430px;
+
+  margin: 0 auto;
+
+  padding: 20px;
+
+  background: var(--bg);
+
+  color: var(--text);
+}
+
+.worker-job-details-header {
+  display: flex;
+
+  align-items: center;
+
+  gap: 12px;
+
+  margin-bottom: 25px;
+}
+
+.worker-job-details-header h1 {
+  margin: 0;
+
+  font-size: 24px;
+
+  color: var(--primary);
+}
+
+.worker-job-details-card {
+  width: 100%;
+
+  padding: 22px;
+
+  background: var(--surface);
+
+  border-radius: 20px;
+
+  box-shadow: var(--shadow-small);
+}
+
+.worker-job-details-card h2 {
+  margin: 0 0 20px;
+
+  font-size: 20px;
+
+  color: var(--text);
+}
+
+.worker-job-detail-row,
+.job-detail-row {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  gap: 15px;
+
+  padding: 14px 0;
+
+  border-bottom: 1px solid var(--border);
+
+  color: var(--text);
+}
+
+.worker-job-detail-row:last-child,
+.job-detail-row:last-child {
+  border-bottom: none;
+}
+
+.worker-job-detail-row span {
+  width: 28px;
+
+  text-align: center;
+
+  font-size: 20px;
+}
+
+.worker-job-detail-row p {
+  margin: 0;
+
+  font-size: 14px;
+
+  color: var(--text);
+}
+
+.job-detail-row strong {
+  flex-shrink: 0;
+
+  color: var(--text);
+}
+
+.accept-job-button {
+  width: 100%;
+
+  margin-top: 20px;
+
+  padding: 15px;
+
+  border-radius: 11px;
+}
+
+.accept-job-button:disabled {
+  cursor: not-allowed;
+
+  opacity: 0.6;
+}
+
+
+/* =========================================================
+   WORKER PROFILE
+   ========================================================= */
+
+.profile-screen .profile-info {
+  margin-top: 25px;
+
+  text-align: left;
+}
+
+.profile-screen .profile-row {
+  display: flex;
+
+  justify-content: space-between;
+
+  gap: 15px;
+
+  padding: 15px 0;
+
+  border-bottom: 1px solid var(--border);
+
+  color: var(--text);
+}
+
+.logout-button {
+  width: 100%;
+
+  margin-top: 25px;
+
+  padding: 13px;
+
+  border: 1px solid var(--danger);
+
+  border-radius: 10px;
+
+  background: transparent;
+
+  color: var(--danger);
+
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: 0.2s ease;
+}
+
+.logout-button:hover {
+  background: var(--danger-soft);
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 480px) {
+
+  .welcome-card {
+    padding: 35px 24px;
+  }
+
+  .register-card {
+    padding: 25px 22px;
+  }
+
+  .greeting-section h1 {
+    font-size: 27px;
+  }
+
+  .create-job-card {
+    padding: 20px;
+  }
+
+  .create-job-icon {
+    width: 58px;
+    height: 58px;
+  }
+
+  .history-job-details {
+    grid-template-columns: 1fr;
+  }
+
+  .history-job-details div:last-child {
+    grid-column: auto;
+  }
+
+  .profile-screen,
+  .job-completed-screen,
+  .worker-home,
+  .worker-home-screen,
+  .worker-jobs-screen,
+  .worker-job-details-screen {
+    padding-left: 18px;
+    padding-right: 18px;
+  }
+
+  .profile-name {
+    font-size: 23px;
+  }
+
+  .job-completed-content h1 {
+    font-size: 24px;
+  }
+
+  .worker-home-header {
+    align-items: flex-start;
+  }
+
+  .worker-welcome-card {
+    padding: 25px 20px;
+  }
+
+  .job-detail-row,
+  .profile-row {
+    flex-direction: column;
+
+    align-items: flex-start;
+
+    gap: 5px;
+  }
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 360px) {
+
+  .farmer-home,
+  .worker-home,
+  .worker-home-screen,
+  .worker-jobs-screen,
+  .worker-job-details-screen,
+  .profile-screen {
+    padding-left: 14px;
+    padding-right: 14px;
+  }
+
+  .create-job-card {
+    gap: 12px;
+  }
+
+  .create-job-content h2 {
+    font-size: 18px;
+  }
+
+  .worker-home-header h1 {
+    font-size: 22px;
+  }
+}
+
+/* =========================================================
+   WORKER REGISTRATION
+   ========================================================= */
+
+.worker-register-screen {
+  min-height: 100vh;
+  width: 100%;
+  max-width: 430px;
+  margin: 0 auto;
+  padding: 20px;
+  background: var(--bg);
+  color: var(--text);
+}
+
+.worker-register-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 30px;
+}
+
+.worker-register-header h1 {
+  flex: 1;
+  margin: 0;
+  font-size: 24px;
+  color: var(--primary);
+}
+
+.worker-register-form {
+  width: 100%;
+  background: var(--surface);
+  padding: 25px 20px;
+  border-radius: 20px;
+  box-shadow: var(--shadow-small);
+}
+
+.worker-register-form label {
+  display: block;
+  margin-bottom: 7px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.worker-register-form input {
+  width: 100%;
+  padding: 14px;
+  margin-bottom: 18px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--surface);
+  color: var(--text);
+  font-size: 15px;
+  outline: none;
+}
+
+.worker-register-form input::placeholder {
+  color: var(--text-muted);
+}
+
+.worker-register-form input:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(46, 125, 50, 0.12);
+}
+
+.register-worker-button {
+  width: 100%;
+  padding: 15px;
+  margin-top: 5px;
+  border: none;
+  border-radius: 12px;
+  background: var(--primary);
+  color: white;
+  font-size: 17px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.register-worker-button:hover {
+  background: var(--primary-dark);
+}
+
+
+
+
+
