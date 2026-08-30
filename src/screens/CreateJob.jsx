@@ -70,7 +70,7 @@ function CreateJob({
 
 try {
   const response = await fetch(
-    "http://127.0.0.1:8000/api/users/jobs/create/",
+    "http://https://namma-kelasa-backend.onrender.com/api/users/jobs/create/",
     {
       method: "POST",
       headers: {
